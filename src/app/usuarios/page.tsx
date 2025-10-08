@@ -10,7 +10,7 @@ export default function UsuariosPage() {
   const [users, setUsers] = useState<User[]>([]);
 
   const fetchUsers = async () => {
-    const res = await fetch(`${BACKEND_URL}/api/users`);
+    const res = await fetch(`${BACKEND_URL}/users`);
     const data = await res.json();
     setUsers(data);
   };
