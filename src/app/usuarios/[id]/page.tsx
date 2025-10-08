@@ -5,7 +5,7 @@ import Link from "next/link";
 
 
 interface Props {
-    params: { id: string };
+    params: Promise<{ id: string }>
 }
 
 async function fetchUser(id: string): Promise<User> {
@@ -15,7 +15,9 @@ async function fetchUser(id: string): Promise<User> {
 }
 
 export default async function ActualizarUsuarioPage({ params }: Props) {
-    const user = await fetchUser(params.id);
+    
+    const { id } = await params;
+    const user = await fetchUser(id);
 
     return (
         <div className="p-4">
